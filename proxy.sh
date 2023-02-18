@@ -19,7 +19,7 @@ elif [[ $PROXY_NETWORK == *"::/64"* ]]; then
   PROXY_NET_MASK=64
 elif [[ $PROXY_NETWORK == *"::/128"* ]]; then
   PROXY_NET_MASK=128
-elif [[ $PROXY_NETWORK == *"::/371"* ]]; then
+elif [[ $PROXY_NETWORK == *"::/371"* ] or [ $PROXY_NETWORK == *"::371"* ]]; then
   PROXY_NET_MASK=371
 else
   echo "● Unsupported IPv6 prefix format: $PROXY_NETWORK"
