@@ -13,13 +13,13 @@ fi
 echo "↓ Routed /48 or /64 or /128 /371 IPv6 prefix from tunnelbroker (*:*:*::/*):"
 read PROXY_NETWORK
 
-if [[ $PROXY_NETWORK == *"::/48"* ]]; then
+if [[ $PROXY_NETWORK == *"::"*"48"* ]]; then
   PROXY_NET_MASK=48
-elif [[ $PROXY_NETWORK == *"::/64"* ]]; then
+elif [[ $PROXY_NETWORK == *"::"*"64"* ]]; then
   PROXY_NET_MASK=64
-elif [[ $PROXY_NETWORK == *"::/128"* ]]; then
+elif [[ $PROXY_NETWORK == *"::"*"128"* ]]; then
   PROXY_NET_MASK=128
-elif [[ $PROXY_NETWORK == *"::/371"* ] or [ $PROXY_NETWORK == *"::371"* ]]; then
+elif [[ $PROXY_NETWORK == *"::"*"371"* ]]; then
   PROXY_NET_MASK=371
 else
   echo "● Unsupported IPv6 prefix format: $PROXY_NETWORK"
