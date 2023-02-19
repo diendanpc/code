@@ -118,26 +118,3 @@ bash /etc/rc.local
 gen_proxy_file_for_user
 
 upload_proxy
-
-ulimit -n 600000
-ulimit -u 600000
-ulimit -i 1200000
-ulimit -s 1000000
-ulimit -l 200000
-/sbin/ip addr add ${PROXY_NETWORK}::/${PROXY_NET_MASK} dev he-ipv6
-sleep 5
-/sbin/ip -6 route add default via ${PROXY_NETWORK}::1
-/sbin/ip -6 route add local ${PROXY_NETWORK}::/${PROXY_NET_MASK} dev lo
-/sbin/ip tunnel add he-ipv6 mode sit remote ${TUNNEL_IPV4_ADDR} local ${HOST_IPV4_ADDR} ttl 255
-/sbin/ip link set he-ipv6 up
-/sbin/ip -6 route add 2000::/3 dev he-ipv6
-~/ndppd/ndppd -d -c ~/ndppd/ndppd.conf
-sleep 2
-~/3proxy/src/3proxy ~/3proxy/3proxy.cfg
-exit 0
-END
-/bin/chmod +x /etc/rc.local
-
-####
-echo "Finishing and rebooting"
-reboot now
